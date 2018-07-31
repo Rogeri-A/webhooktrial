@@ -35,16 +35,20 @@ foreach ($client->parseEvents() as $event) {
                     )
                     , array(
                         'type' => 'text'
-                        , 'text' => 'user id : '. $event['source']['userId']
+                        , 'text' => json_encode($event['source'])
                     )
-                    , array(
-                        'type' => 'text'
-                        , 'text' => 'user id : '. $event['source']['roomId']
-                    )
-                    , array(
-                        'type' => 'text'
-                        , 'text' => 'user id : '. $event['source']['groupId']
-                    )
+                    // , array(
+                    //     'type' => 'text'
+                    //     , 'text' => 'user id : '. $event['source']['userId']
+                    // )
+                    // , array(
+                    //     'type' => 'text'
+                    //     , 'text' => 'room id : '. $event['source']['roomId']
+                    // )
+                    // , array(
+                    //     'type' => 'text'
+                    //     , 'text' => 'group id : '. $event['source']['groupId']
+                    // )
                 )
             ));
             /*$message = $event['message'];
@@ -103,15 +107,7 @@ foreach ($client->parseEvents() as $event) {
                     )
                     , array(
                         'type' => 'text'
-                        , 'text' => 'user id : '. $event['source']['userId']
-                    )
-                    , array(
-                        'type' => 'text'
-                        , 'text' => 'user id : '. $event['source']['roomId']
-                    )
-                    , array(
-                        'type' => 'text'
-                        , 'text' => 'user id : '. $event['source']['groupId']
+                        , 'text' => json_encode($event['source']['userId'])
                     )
                 )
             ));
