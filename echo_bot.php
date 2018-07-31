@@ -23,31 +23,31 @@ $channelSecret = '7b3670fe459ebc369420b231b149dc5e';
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 foreach ($client->parseEvents() as $event) {
-    $client->replyMessage(array(
-        'replyToken' => $event['replyToken']
-        , 'messages' => array(
-            array(
-                'type' => 'text'
-                , 'text' => 'anda telah melakukan event : '. $event['type']
-            )
-            , array(
-                'type' => 'text'
-                , 'text' => 'user id : '. $event['source']['userId']
-            )
-            , array(
-                'type' => 'text'
-                , 'text' => 'user id : '. $event['source']['roomId']
-            )
-            , array(
-                'type' => 'text'
-                , 'text' => 'user id : '. $event['source']['groupId']
-            )
-        )
-    ));
-    /*switch ($event['type']) {
+    
+    switch ($event['type']) {
         case 'message':
-            $message = $event['message'];
-
+            $client->replyMessage(array(
+                'replyToken' => $event['replyToken']
+                , 'messages' => array(
+                    array(
+                        'type' => 'text'
+                        , 'text' => 'anda telah melakukan event : '. $event['type']
+                    )
+                    , array(
+                        'type' => 'text'
+                        , 'text' => 'user id : '. $event['source']['userId']
+                    )
+                    , array(
+                        'type' => 'text'
+                        , 'text' => 'user id : '. $event['source']['roomId']
+                    )
+                    , array(
+                        'type' => 'text'
+                        , 'text' => 'user id : '. $event['source']['groupId']
+                    )
+                )
+            ));
+            /*$message = $event['message'];
             switch ($message['type']) {
                 case 'text':
                     $client->replyMessage(array(
@@ -92,15 +92,32 @@ foreach ($client->parseEvents() as $event) {
                     error_log("Unsupporeted message type: " . $message['type']);
                     break;
             }
-            break;
+            break;*/
         case 'follow':
             $client->replyMessage(array(
                 'replyToken' => $event['replyToken']
-                , 
+                , 'messages' => array(
+                    array(
+                        'type' => 'text'
+                        , 'text' => 'anda telah melakukan event : '. $event['type']
+                    )
+                    , array(
+                        'type' => 'text'
+                        , 'text' => 'user id : '. $event['source']['userId']
+                    )
+                    , array(
+                        'type' => 'text'
+                        , 'text' => 'user id : '. $event['source']['roomId']
+                    )
+                    , array(
+                        'type' => 'text'
+                        , 'text' => 'user id : '. $event['source']['groupId']
+                    )
+                )
             ));
             break;
         default:
             error_log("Unsupporeted event type: " . $event['type']);
-            break;*/
+            break;
     }
 };
