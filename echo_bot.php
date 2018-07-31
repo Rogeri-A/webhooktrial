@@ -38,7 +38,7 @@ foreach ($client->parseEvents() as $event) {
                             )
                             , array(
                                 'type' => 'text'
-                                , 'text' => "apakah benar?"
+                                , 'text' => print_r($message['source'])
                             )
                         )
                     ));
