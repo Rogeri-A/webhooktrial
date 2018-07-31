@@ -38,7 +38,11 @@ foreach ($client->parseEvents() as $event) {
                             )
                             , array(
                                 'type' => 'text'
-                                , 'text' => print_r($message['source'])
+                                , 'text' => print_r($event['source'])
+                            )
+                            , array(
+                                'type' => 'text'
+                                , 'text' => $event['source']['userId']
                             )
                         )
                     ));
@@ -46,6 +50,17 @@ foreach ($client->parseEvents() as $event) {
                     //     'replyToken' => $event['replyToken']
                     //     , 'messages'
                     // ));
+                    break;
+                case 'sticker':
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken']
+                        , 'messages' => array(
+                            array(
+                                'type' => 'text'
+                                , 'text' => "Maaf, kami tidak paham dengan stiker!"
+                            )
+                        )
+                    ));
                     break;
                 default:
                     error_log("Unsupporeted message type: " . $message['type']);
