@@ -38,7 +38,11 @@ foreach ($client->parseEvents() as $event) {
                             )
                             , array(
                                 'type' => 'text'
-                                , 'text' => print_r($event['source'])
+                                , 'text' => json_encode($event['source']['type'])
+                            )
+                            , array(
+                                'type' => 'text'
+                                , 'text' => json_encode($event['source']['roomId'])
                             )
                             , array(
                                 'type' => 'text'
