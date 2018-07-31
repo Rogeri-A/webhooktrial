@@ -23,7 +23,28 @@ $channelSecret = '7b3670fe459ebc369420b231b149dc5e';
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 foreach ($client->parseEvents() as $event) {
-    switch ($event['type']) {
+    $client->replyhMessage(array(
+        'replyToken' => $event['replyToken']
+        , 'messages' => array(
+            array(
+                'type' => 'text'
+                , 'text' => 'anda telah melakukan event : '. $event['type']
+            )
+            , array(
+                'type' => 'text'
+                , 'text' => 'user id : '. $event['source']['userId']
+            )
+            , array(
+                'type' => 'text'
+                , 'text' => 'user id : '. $event['source']['roomId']
+            )
+            , array(
+                'type' => 'text'
+                , 'text' => 'user id : '. $event['source']['groupId']
+            )
+        )
+    ));
+    /*switch ($event['type']) {
         case 'message':
             $message = $event['message'];
 
@@ -38,12 +59,13 @@ foreach ($client->parseEvents() as $event) {
                             )
                             , array(
                                 'type' => 'text'
-                                , 'text' => json_encode($event['source']['type'])
+                                , 'text' => json_encode($event['source'])
                             )
                             , array(
                                 'type' => 'text'
                                 , 'text' => json_encode($event['source']['roomId'])
                             )
+                            , array()
                             , array(
                                 'type' => 'text'
                                 , 'text' => $event['source']['userId']
@@ -71,8 +93,14 @@ foreach ($client->parseEvents() as $event) {
                     break;
             }
             break;
+        case 'follow':
+            $client->replyMessage(array(
+                'replyToken' => $event['replyToken']
+                , 
+            ));
+            break;
         default:
             error_log("Unsupporeted event type: " . $event['type']);
-            break;
+            break;*/
     }
 };
