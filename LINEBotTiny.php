@@ -104,14 +104,14 @@ class LINEBotTiny
                 "content" => json_encode($message),
             ),
         ));
-        $response = exec_url('http://api.line.me/v2/bot/message/reply', $this->channelAccessToken, json_encode($messages));
-        /*$response = file_get_contents('https://api.line.me/v2/bot/message/reply', false, $context);
+        // $response = exec_url('http://api.line.me/v2/bot/message/reply', $this->channelAccessToken, json_encode($messages));
+        $response = file_get_contents('https://api.line.me/v2/bot/message/reply', false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
-        }*/
+        }
     }
-    function exec_url($fullurl, $channelAcecssToken, $message)
+    /*function exec_url($fullurl, $channelAcecssToken, $message)
     {
         $header = array(
             "Content-Type: application/json"
@@ -131,8 +131,7 @@ class LINEBotTiny
 
         $returned = curl_exec($ch);
         return($returned);
-
-    }
+    }*/
 
     private function sign($body)
     {
