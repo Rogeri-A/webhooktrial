@@ -26,6 +26,7 @@ foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];
+
             switch ($message['type']) {
                 case 'text':
                     $client->replyMessage(array(
@@ -35,8 +36,16 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'text',
                                 'text' => "anda mengirimkan : ". $message['text']
                             )
+                            , array(
+                                'type' => 'text'
+                                , 'text' => "apakah benar?"
+                            )
                         )
                     ));
+                    // $client->replyMessage(array(
+                    //     'replyToken' => $event['replyToken']
+                    //     , 'messages'
+                    // ));
                     break;
                 default:
                     error_log("Unsupporeted message type: " . $message['type']);
