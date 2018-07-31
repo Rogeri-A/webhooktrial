@@ -1,6 +1,6 @@
 <?php // callback.php
-define("LINE_MESSAGING_API_CHANNEL_SECRET", 'fMqODiIJG3EdDbp8OoiL0YjHN0r2ZkeZhcLZ7ulPZ904dV5RpUIMwk9Eb74d/2q3SBSSWo3zea72fERCvIkSUsyQMOJ9YgN2rPq4+kVYnmsWgsEoU9tm+sx/CfzjJ52aXZgalvN6qY0miMPVvJ7LqwdB04t89/1O/w1cDnyilFU=');
-define("LINE_MESSAGING_API_CHANNEL_TOKEN", '35c979166caed23f3f3d7a4cfb4bde9e');
+define("LINE_MESSAGING_API_CHANNEL_SECRET", '35c979166caed23f3f3d7a4cfb4bde9e');
+define("LINE_MESSAGING_API_CHANNEL_TOKEN", 'dTTPJ6o2wb1XwlgIE73EzyWaW0czeWNaEEa8o2ynKhXkid47mmBMkjO2VXdjO9mJSBSSWo3zea72fERCvIkSUsyQMOJ9YgN2rPq4+kVYnmvO+mjud/KoDeCasYcUiVIgnx75X4MOf2TbtsX6MbI/7AdB04t89/1O/w1cDnyilFU=');
 
 require __DIR__."/../vendor/autoload.php";
 
