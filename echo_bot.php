@@ -107,7 +107,22 @@ foreach ($client->parseEvents() as $event) {
                     )
                     , array(
                         'type' => 'text'
-                        , 'text' => json_encode($event['source']['userId'])
+                        , 'text' => json_encode($event['source'])
+                    )
+                )
+            ));
+            break;
+        case 'join':
+            $client->replyMessage(array(
+                'replyToken' => $event['replyToken']
+                , 'messages' => array(
+                    array(
+                        'type' => 'text'
+                        , 'text' => 'anda telah melakukan event : '. $event['type']
+                    )
+                    , array(
+                        'type' => 'text'
+                        , 'text' => json_encode($event['source'])
                     )
                 )
             ));
