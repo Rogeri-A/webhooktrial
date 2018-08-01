@@ -104,35 +104,14 @@ class LINEBotTiny
                 "content" => json_encode($message),
             ),
         ));
-        // $response = exec_url('http://api.line.me/v2/bot/message/reply', $this->channelAccessToken, json_encode($messages));
+        
         $response = file_get_contents('https://api.line.me/v2/bot/message/reply', false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             http_response_code(500);
             error_log("Request failed: " . $response);
         }
     }
-    /*function exec_url($fullurl, $channelAcecssToken, $message)
-    {
-        $header = array(
-            "Content-Type: application/json"
-            , 'Authorization: Bearer '.$channelAccessToken
-        );
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_VERBOSE, 1 );
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $message);
-        curl_setopt($ch, CURLOPT_FAILONERROR, 0);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($ch, CURLOPT_URL, $fullurl);
-
-        $returned = curl_exec($ch);
-        return($returned);
-    }*/
-
+   
     private function sign($body)
     {
         $hash = hash_hmac('sha256', $body, $this->channelSecret, true);

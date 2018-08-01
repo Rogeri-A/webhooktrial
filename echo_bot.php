@@ -30,13 +30,14 @@ foreach ($client->parseEvents() as $event) {
                 'type' => 'text'
                 , 'text' => 'anda telah melakukan event : '. $event['type']
             )
+            // timestamp ini masih perlu di-convert lagi karena bentuknay semacam int/float, bukan ormat seperti d-m-y h:i:s
+            // , array(
+            //     'type' => 'text'
+            //     , 'text' => 'Pesan dikirim pada : '.$event['timestamp']
+            // )
             , array(
                 'type' => 'text'
-                , 'text' => json_encode($event['source'])
-            )
-            , array(
-                'type' => 'text'
-                , 'text' => json_encode($event)
+                , 'text' => json_encode($event['source']['userId'])
             )
         )
     ));
