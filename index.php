@@ -1,6 +1,42 @@
-    <?php
+<?php
     require __DIR__ . '/vendor/autoload.php';
-     
+    
+    use LINE\LINEBot\EchoBot\Dependency;
+	use LINE\LINEBot\EchoBot\Route;
+	use LINE\LINEBot\EchoBot\Setting;
+
+	// require_once __DIR__ . '/../vendor/autoload.php';
+
+	// $setting = Setting::getSetting();
+	$setting = [
+            'settings' => [
+                'displayErrorDetails' => true, // set to false in production
+
+                'logger' => [
+                    'name' => 'slim-app',
+                    'path' => __DIR__ . '/../../../logs/app.log',
+                ],
+
+                'bot' => [
+                    'channelToken' => getenv('LINEBOT_CHANNEL_TOKEN') ?: 'ivs0Di9l7ocERtIF1C3ZJnotI3HMluaXBoXjIbltAYRaN0nO+MiiMf3/Tu8NkdJlSBSSWo3zea72fERCvIkSUsyQMOJ9YgN2rPq4+kVYnmvPv2m68MSBhB9SRGJQ/9zaDkPJF2q3Cx2QUk+Ugwt0PAdB04t89/1O/w1cDnyilFU=',
+                    'channelSecret' => getenv('LINEBOT_CHANNEL_SECRET') ?: '7b3670fe459ebc369420b231b149dc5e',
+                ],
+
+                'apiEndpointBase' => getenv('LINEBOT_API_ENDPOINT_BASE'),
+            ],
+        ];
+	$app = new Slim\App($setting);
+
+	(new Dependency())->register($app);
+	(new Route())->register($app);
+
+	$app->run();
+
+    die();
+
+
+
+
     use \LINE\LINEBot;
     use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
     use \LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
