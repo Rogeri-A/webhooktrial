@@ -61,5 +61,22 @@
 	     	return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
         }
     });
+
+    $app->get('/rogerHalo', function($req, $res) use ($bot){
+    	$rogerId = 'U7132d293775a90cddb30d9762ac2646a';
+    	$msg = new TextMessageBuilder("Roger, Roger");
+    	$result = $bot->pushMessage($rogerId, $msg);
+
+    	return $res->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+    });
+
+    $app->get('/vilatHalo', function($req, $res) use ($bot){
+    	$vilatId = 'U7e0b726622d3afb0050fc1f2d1b8b2cb';
+    	$msg = new TextMessageBuilder("Halo Vilat! :D");
+    	$result = $bot->pushMessage($vilatId, $msg);
+
+    	return $res->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+    });
+
      
     $app->run();
