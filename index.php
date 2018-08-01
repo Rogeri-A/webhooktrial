@@ -55,7 +55,7 @@
      
         // kode aplikasi nanti disini
         $data = json_decode($body, true);
-        $result = bot->replyText($event['replyToken'], 'reply via slim');
+        $result = $bot->replyText($event['replyToken'], 'reply via slim');
      	
      	return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
     });
